@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+        <!--延迟加载entity的关联属性-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="useGeneratedKeys" value="false"/>
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <setting name="defaultStatementTimeout" value="25"/>
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <!--在映射database column名字和entity属性名时，自动将带下划线column名转化为常见的java驼峰形式属性名 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+    </settings>
+
+    <!-- 对事务的管理和连接池的配置 -->
+    <!--<environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+                <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" />
+                <property name="username" value="ibatis" />
+                <property name="password" value="ibatis" />
+            </dataSource>
+        </environment>
+    </environments>-->
+
+    <typeAliases>
+        <!--包扫描-->
+        <package name="com.it.model"/>
+        <!--加上下面的可以在xxxMapper.xml中, resultType直接等于别名-->
+        <!--<typeAlias type="com.it.model.Tb_User" alias="Tb_User"/>-->
+    </typeAliases>
+
+    <!--<mappers>
+        <mapper resource="com.it.dao.UserDao"/>
+        <package name="com.it.dao"/>
+    </mappers>-->
+
+</configuration>

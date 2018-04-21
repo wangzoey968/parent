@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/manage_common/manage_common.iml" filepath="$PROJECT_DIR$/manage_common/manage_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manage_dao/manage_dao.iml" filepath="$PROJECT_DIR$/manage_dao/manage_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manage_pojo/manage_pojo.iml" filepath="$PROJECT_DIR$/manage_pojo/manage_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manage_service/manage_service.iml" filepath="$PROJECT_DIR$/manage_service/manage_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manage_web/manage_web.iml" filepath="$PROJECT_DIR$/manage_web/manage_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
+    </modules>
+  </component>
+</project>

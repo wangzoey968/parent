@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.UserDao">
+    <sql id="field">id,name,sex,address</sql>
+    <insert id="insert">
+        INSERT tb_user(id,name,sex,address) VALUES (#{id},#{name},#{sex},#{address})
+    </insert>
+    <delete id="delete">
+        DELETE FROM tb_user WHERE id=#{id}
+    </delete>
+    <update id="update">
+        UPDATE tb_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name!= null and name !='' and name != 'null'">name=#{name},</if>
+            <if test="sex!= null ">sex=#{sex},</if>
+            <if test="address!= null and address !='' and address != 'null'">address=#{address}</if>
+        </trim>
+        WHERE id=#{id} ;
+    </update>
+    <select id="select" resultType="Tb_User">
+        SELECT * FROM tb_user
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="id!= null and id !='' ">id=#{id}</if>
+            <if test="name!= null and name !='' and name != 'null'">AND name=#{name}</if>
+            <if test="sex!= null ">AND sex=#{sex}</if>
+            <if test="address!= null and address !='' and address != 'null'">AND address=#{address}</if>
+        </trim>
+    </select>
+
+    <!--第一种方式-->
+    <!--user和role,一对多,多表联查-->
+    <!--<resultMap id="userRoleResult" type="Tb_User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <collection property="roles" ofType="Tb_Role">
+            <result column="id" property="id"/>
+            <result column="role" property="role"/>
+            <result column="tb_user_id" property="tb_user_id"/>
+        </collection>
+        &lt;!&ndash;<association property="roles" javaType="Tb_Role">
+            <result property="id" column="id"/>
+            <result property="role" column="role"/>
+            <result property="tb_user_id" column="tb_user_id"/>
+        </association>&ndash;&gt;
+    </resultMap>
+    <select id="selectUserRole" parameterType="Integer" resultMap="userRoleResult">
+        SELECT
+            user.id ,
+            user.name,
+            user.sex,
+            user.address,
+            user.photo,
+            role.id ,
+            role.role,
+            role.tb_user_id
+        FROM
+            tb_user user
+        LEFT JOIN tb_role role
+            ON role.tb_user_id=user.id
+        AND
+            user.id=#{id}
+    </select>-->
+
+    <!--定义结果集-->
+    <resultMap id="result" type="Tb_User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <result property="photo" column="photo"/>
+        <!--<collection property="roles" ofType="com.it.model.Tb_Role" select="selectUserAndRole" fetchType="lazy">
+            <id property="id" column="id"/>
+            <result property="role" column="role"/>
+            <result property="tb_user_id" column="tb_user_id"/>
+        </collection>-->
+    </resultMap>
+    <!--查询的起始位置-->
+    <select id="selectUserRole" resultMap="result">
+        select user.id,user.name,user.sex,user.address,user.photo from tb_user user WHERE id=#{id};
+    </select>
+    <!--collection的调用-->
+    <select id="selectUserAndRole" resultType="Tb_Role">
+        SELECT id,role,tb_user_id FROM tb_role WHERE tb_user_id = #{id}
+    </select>
+
+</mapper>
