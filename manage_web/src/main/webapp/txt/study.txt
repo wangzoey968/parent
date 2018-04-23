@@ -1,0 +1,4 @@
+分页查询的参数
+pageNum;
+pageSize;
+maxPageNum;

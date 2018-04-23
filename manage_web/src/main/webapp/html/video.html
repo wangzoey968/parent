@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div style="text-align:center">
+    <button onclick="playPause()">播放/暂停</button>
+    <button onclick="makeBig()">放大</button>
+    <button onclick="makeSmall()">缩小</button>
+    <button onclick="makeNormal()">普通</button>
+    <br>
+    <video id="video" width="420" onclick="playPause()" controls="controls" poster="video_img/img.png">
+        <source src="video_img/zhundian.mp4" type="video/mp4">
+    </video>
+</div>
+
+<script>
+    var myVideo = document.getElementById("video");
+    var temp = 420;
+    function playPause() {
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+
+    function makeBig() {
+        myVideo.width = temp + 120;
+        temp = temp + 120;
+    }
+
+    function makeSmall() {
+        myVideo.width = temp - 120;
+        temp = temp - 120;
+    }
+
+    function makeNormal() {
+        myVideo.width = 420;
+    }
+</script>
+</body>
+</html>
