@@ -1,5 +1,4 @@
 分页查询的参数
 当前页码:pageNum;
 每页条数:pageSize;
-总条数:maxPageNum;
 
