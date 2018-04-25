@@ -40,8 +40,6 @@ public class UserController {
     //登录
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public ModelAndView login(HttpServletRequest request, Tb_User user) throws IOException {
-
-
         Tb_User u = userService.selectUserByName(user.getName());
         ModelAndView view = new ModelAndView();
         if (u == null) {
