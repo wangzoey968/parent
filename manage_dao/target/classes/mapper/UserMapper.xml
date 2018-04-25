@@ -17,8 +17,14 @@
         </trim>
         WHERE id=#{id} ;
     </update>
+
+    <!--根据名字查询用户-->
+    <select id="selectUserByName" parameterType="String" resultType="Tb_User">
+        SELECT id,name,sex,address,photo,password FROM tb_user WHERE name=#{name}
+    </select>
+
     <select id="select" resultType="Tb_User">
-        SELECT * FROM tb_user
+        SELECT id,name,sex,address,photo FROM tb_user
         <trim prefix="WHERE" prefixOverrides="AND">
             <if test="id!= null and id !='' ">id=#{id}</if>
             <if test="name!= null and name !='' and name != 'null'">AND name=#{name}</if>

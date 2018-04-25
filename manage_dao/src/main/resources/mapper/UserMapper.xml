@@ -19,8 +19,8 @@
     </update>
 
     <!--根据名字查询用户-->
-    <select id="selectUserByName" resultType="Tb_User">
-        SELECT id,name,sex,address,photo,password FROM tb_user
+    <select id="selectUserByName" parameterType="String" resultType="Tb_User">
+        SELECT id,name,sex,address,photo,password FROM tb_user WHERE name=#{name}
     </select>
 
     <select id="select" resultType="Tb_User">
