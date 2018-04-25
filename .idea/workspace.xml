@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2224b25-3e8b-4b2a-a1c1-0de263565f0e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manage_web/src/main/webapp/html/boot.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/manage_web/src/main/webapp/html/video.html" afterPath="$PROJECT_DIR$/manage_web/src/main/webapp/html/video_img/video.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_dao/target/classes/com/it/dao/UserDao.class" afterPath="$PROJECT_DIR$/manage_dao/target/classes/com/it/dao/UserDao.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_pojo/target/classes/com/it/model/Tb_User.class" afterPath="$PROJECT_DIR$/manage_pojo/target/classes/com/it/model/Tb_User.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_service/target/classes/com/it/service/UserService.class" afterPath="$PROJECT_DIR$/manage_service/target/classes/com/it/service/UserService.class" />
@@ -15,10 +12,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_web/target/manage_web/WEB-INF/lib/manage_pojo-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/manage_web/target/manage_web/WEB-INF/lib/manage_pojo-1.0-SNAPSHOT.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_web/target/manage_web/WEB-INF/lib/manage_service-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/manage_web/target/manage_web/WEB-INF/lib/manage_service-1.0-SNAPSHOT.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_dao/src/main/resources/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/manage_dao/src/main/resources/mapper/UserMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_dao/target/classes/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/manage_dao/target/classes/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_web/src/main/resources/config/applicationContext.xml" afterPath="$PROJECT_DIR$/manage_web/src/main/resources/config/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_web/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/manage_web/src/main/webapp/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_web/target/classes/config/applicationContext.xml" afterPath="$PROJECT_DIR$/manage_web/target/classes/config/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_web/target/classes/config/mybatis-config.xml" afterPath="$PROJECT_DIR$/manage_web/target/classes/config/mybatis-config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage_web/target/classes/config/spring-mvc.xml" afterPath="$PROJECT_DIR$/manage_web/target/classes/config/spring-mvc.xml" />
@@ -2237,7 +2231,7 @@
       <workItem from="1524311122204" duration="955000" />
       <workItem from="1524446691085" duration="23956000" />
       <workItem from="1524620236321" duration="4633000" />
-      <workItem from="1524624979381" duration="1622000" />
+      <workItem from="1524624979381" duration="1670000" />
     </task>
     <task id="LOCAL-00001" summary="测试">
       <created>1524450311375</created>
@@ -2295,7 +2289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524620649707</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="null">
+      <created>1524626616419</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1524626616419</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2331,7 +2332,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211500000" />
+    <option name="totallyTimeSpent" value="211548000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="0" width="1936" height="1058" extended-state="0" />
@@ -2552,6 +2553,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="650">
           <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2684,6 +2686,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
