@@ -9,4 +9,6 @@ public interface UserDao extends BaseDao<Tb_User> {
 
     public Tb_User selectUserRole(Integer userId);
 
+    public Tb_User selectUserByName(String username);
+
 }

@@ -27,6 +27,12 @@ public interface UserService {
     Boolean updateUserById(Tb_User tb_User);
 
     /**
+     * 根据用户名获取用户
+     * @param username
+     * @return
+     */
+    Tb_User selectUserByName(String username);
+    /**
      * 查询学生信息
      * @param id
      * @return

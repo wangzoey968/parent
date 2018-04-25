@@ -29,6 +29,10 @@ public class Tb_User {
      */
     private String photo;
     /**
+     * 密码
+     */
+    private String password;
+    /**
      * user拥有的role,一user对多role,
      */
     private ArrayList<Tb_Role> roles;
@@ -87,6 +91,14 @@ public class Tb_User {
 
     public ArrayList<Tb_Role> getRoles() {
         return roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setRoles(ArrayList<Tb_Role> roles) {

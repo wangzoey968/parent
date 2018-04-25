@@ -2,6 +2,7 @@ package com.it.controller;
 
 import com.it.model.Tb_User;
 import com.it.service.UserService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.ClassPathResource;
@@ -18,7 +19,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.Marshaller;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -33,6 +36,34 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    //登录
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public ModelAndView login(HttpServletRequest request, Tb_User user) throws IOException {
+
+
+        Tb_User u = userService.selectUserByName(user.getName());
+        ModelAndView view = new ModelAndView();
+        if (u == null) {
+            view.addObject("message", "用户不存在");
+            view.setViewName("redirect:/index.jsp");
+        } else if (u.getPassword().equals(DigestUtils.md5Hex(user.getName() + user.getPassword()))) {
+            view.addObject("message", "密码输入错误");
+            view.setViewName("redirect:/index.jsp");
+        } else {
+            view.setViewName("/jsp/user/home");
+            request.getSession().setAttribute(u.getName(),u);
+            request.getSession().setMaxInactiveInterval(1000 * 60 * 60 * 24 * 3);
+        }
+        return view;
+    }
+
+    //退出登录
+    @RequestMapping("logout")
+    public String logout(HttpServletRequest request,String name){
+        request.getSession().removeAttribute(name);
+        return "forward:/index.jsp";
+    }
 
     @RequestMapping("/userInfo")
     public String userInfo(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Integer id, Model model,

@@ -49,6 +49,10 @@ public class UserServiceImpl implements UserService {
         return userDao.update(tb_User);
     }
 
+    public Tb_User selectUserByName(String username){
+        return userDao.selectUserByName(username);
+    }
+
     public List<Tb_User> selectUser(Integer id) {
         Tb_User tb_User = new Tb_User();
         tb_User.setId(id);
