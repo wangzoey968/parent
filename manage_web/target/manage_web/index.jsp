@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-table.min.css">
     <script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
-    <title>Hello</title>
+    <title>Hello提交</title>
 </head>
 
 <body>

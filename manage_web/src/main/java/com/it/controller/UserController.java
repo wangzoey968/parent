@@ -2,6 +2,7 @@ package com.it.controller;
 
 import com.it.model.Tb_User;
 import com.it.service.UserService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -37,9 +38,18 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/userInfo")
+    public String pageTest(HttpServletRequest request, HttpServletResponse response, Integer id, Model model) {
+        Tb_User user = userService.selectUserById(id);
+        model.addAttribute("user", user);
+        //return "redirect:/jsp/user/aaa.jsp";
+        //return "forward:/index.jsp";
+        return "/jsp/user/userInfo";
+    }
+
     //登录
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ModelAndView login(HttpServletRequest request, Tb_User user) throws IOException {
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView login(HttpServletRequest request, HttpServletResponse response, Tb_User user) throws IOException {
         Tb_User u = userService.selectUserByName(user.getName());
         ModelAndView view = new ModelAndView();
         if (u == null) {
@@ -50,7 +60,7 @@ public class UserController {
             view.setViewName("redirect:/index.jsp");
         } else {
             view.setViewName("/jsp/user/home");
-            request.getSession().setAttribute(u.getName(),u);
+            request.getSession().setAttribute(u.getName(), u);
             request.getSession().setMaxInactiveInterval(1000 * 60 * 60 * 24 * 3);
         }
         return view;
@@ -58,25 +68,9 @@ public class UserController {
 
     //退出登录
     @RequestMapping("logout")
-    public String logout(HttpServletRequest request,String name){
+    public String logout(HttpServletRequest request, HttpServletResponse response, @RequestParam("name") String name) {
         request.getSession().removeAttribute(name);
         return "forward:/index.jsp";
-    }
-
-    @RequestMapping("/userInfo")
-    public String userInfo(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Integer id, Model model,
-                           @CookieValue(value = "sessionId", required = true) String sessionId) {
-        List<Tb_User> tb_Users = userService.selectUser(id);
-        model.addAttribute("users", tb_Users);
-        //return "redirect:/jsp/user/aaa.html";
-        return "/jsp/user/userInfo";
-    }
-
-    @RequestMapping("/userCookie")
-    public void userCookie(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Integer id) {
-        List<Tb_User> user = userService.selectUser(id);
-        response.addCookie(new Cookie("user", user.toString()));
-
     }
 
     //将图片写入到输出流中,客户端读取到图片
@@ -86,15 +80,6 @@ public class UserController {
         Resource resource = new ClassPathResource("/headIcon.jpg");
         byte[] bytes = FileCopyUtils.copyToByteArray(resource.getInputStream());
         return bytes;
-    }
-
-    @RequestMapping(value = "/userRole")
-    public ModelAndView selectUserRole(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Integer id) {
-        ModelAndView mv = new ModelAndView();
-        List<Tb_User> tb_Users = userService.selectUser(id);
-        mv.addObject("users", tb_Users);
-        mv.setViewName("/jsp/user/userInfo");
-        return mv;
     }
 
     /**

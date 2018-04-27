@@ -5,6 +5,6 @@
     <title>userInfo page</title>
 </head>
 <body>
-<h2>${users}</h2>
+<h2>${user}</h2>
 </body>
 </html>

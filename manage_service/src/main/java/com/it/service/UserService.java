@@ -10,21 +10,28 @@ public interface UserService {
      * @param tb_User
      * @return
      */
-    Boolean insertUser(Tb_User tb_User);
+    Tb_User insertUser(Tb_User tb_User);
 
     /**
      * 根据ID删除学生
      * @param id
      * @return
      */
-    Boolean deleteUserById(Integer id);
+    Tb_User deleteUserById(Integer id);
 
     /**
      * 根据ID修改学生信息
      * @param tb_User
      * @return
      */
-    Boolean updateUserById(Tb_User tb_User);
+    Tb_User updateUserById(Tb_User tb_User);
+
+    /**
+     * 根据id查询用户
+     * @param id
+     * @return
+     */
+    Tb_User selectUserById(Integer id);
 
     /**
      * 根据用户名获取用户
@@ -32,18 +39,13 @@ public interface UserService {
      * @return
      */
     Tb_User selectUserByName(String username);
-    /**
-     * 查询学生信息
-     * @param id
-     * @return
-     */
-    List<Tb_User> selectUser(Integer id);
 
     /**
-     * 查询用户的角色
-     * @param id user的id
+     * 根据地址查询用户
+     * @param address
      * @return
      */
-    Tb_User selectUserRole(Integer id);
+    List<Tb_User> selectUserByAddress(String address);
+
 
 }

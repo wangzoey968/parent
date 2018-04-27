@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>my test</title>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../lib/bootstrap/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../lib/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div>
-    <form class="well form-inline">
-        <input type="text" class="input-small" placeholder="邮件"/>
-        <input type="password" class="input-small" placeholder="密码"/>
-        <label class="checkbox"> <input type="checkbox">记住</label>
-        <button type="submit" class="btn">登录</button>
-    </form>
-</div>
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span2"> Sidebar content</div>
-        <div class="span10"> Body content</div>
+    <div class="container">
+        <!--文件上传-->
+        <div>
+            <form action="/user/uploadFile.do" enctype="multipart/form-data" method="post">
+                <input type="file"/><br>
+                <input type="submit" value="提交">
+                <input type="reset" value="重置">
+            </form>
+        </div>
     </div>
 </div>
+
 </body>
 </html>
