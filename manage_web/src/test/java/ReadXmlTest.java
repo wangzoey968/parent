@@ -12,8 +12,7 @@ public class ReadXmlTest {
     public void ss(){
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/config/applicationContext.xml");
         UserService userService = (UserService) context.getBean("userService");
-        Tb_User tb_user = userService.selectUserRole(1);
-        System.out.println(tb_user.toString());
+        //Tb_User tb_user = userService.selectUserRole(1);
     }
 
 }

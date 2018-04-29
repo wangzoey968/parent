@@ -4,6 +4,7 @@ import com.it.model.Tb_User;
 import com.it.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.ClassPathResource;
@@ -63,6 +64,8 @@ public class UserController {
             request.getSession().setAttribute(u.getName(), u);
             request.getSession().setMaxInactiveInterval(1000 * 60 * 60 * 24 * 3);
         }
+        System.gc();
+        System.runFinalization();
         return view;
     }
 

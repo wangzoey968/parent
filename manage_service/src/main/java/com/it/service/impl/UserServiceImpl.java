@@ -31,7 +31,8 @@ public class UserServiceImpl implements UserService {
     }
 
     public Tb_User selectUserById(Integer id) {
-        return userDao.selectUserById(id);
+        //return userDao.selectUserById(id);
+        return null;
     }
 
     public Tb_User selectUserByName(String username) {
