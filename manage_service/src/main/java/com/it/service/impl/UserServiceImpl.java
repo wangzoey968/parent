@@ -44,14 +44,7 @@ public class UserServiceImpl implements UserService {
 
     /*查询用户以及下面的角色*/
     public List<Tb_User> selectUserRole(Integer id){
-        List<Tb_User> users = userDao.selectUserRole(id);
-        for (Tb_User user : users) {
-            System.out.println(user.toString());
-            for (Tb_Role role : user.getRoles()) {
-                System.out.println(role.getRoleName()+role.getId());
-            }
-        }
-        return users;
+        return userDao.selectUserRole(id);
     }
 
     //**************************************************************************
