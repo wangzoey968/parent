@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
         return userDao.selectUserRole(id);
     }
 
-    //**************************************************************************
+    //***********************************************************************
     //supports是指有事物就使用事物,没有事物,就忽略
     //@Cacheable(value = "user")
     //@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.SUPPORTS)
