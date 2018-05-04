@@ -1,4 +1,5 @@
 import com.it.model.Tb_User;
+import javafx.beans.property.Property;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -7,9 +8,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by wangzy on 2018/4/18.
@@ -20,10 +28,23 @@ public class SqlSessionFactoryTest {
     private SqlSession session;
 
     @Before
-    public void init() throws IOException {
+    public void init() throws Exception {
+        //1
         String resource = "/config/mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        //2
+        Properties properties = new Properties();
+        FileInputStream in = new FileInputStream("database.properties");
+        properties.load(in);
+        String driver = properties.getProperty("jdbc.driver");
+        Connection connection = DriverManager.getConnection(null, null, null);
+        connection.setAutoCommit(false);
+        Statement statement = connection.createStatement();
+        ResultSet set = statement.executeQuery("SELECT * FROM tb_user");
+        connection.commit();
+        connection.rollback();
     }
 
     @After
@@ -33,8 +54,9 @@ public class SqlSessionFactoryTest {
     }
 
     @Test
-    public void getUsers() {
+    public void getUsers() throws Exception {
         session = sqlSessionFactory.openSession();
         List<Tb_User> list = session.selectList("com.it.dao.UserDao.select");
+
     }
 }

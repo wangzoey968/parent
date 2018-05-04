@@ -2,6 +2,8 @@ package com.it.model;
 
 import org.apache.ibatis.type.Alias;
 
+import java.util.List;
+
 /**
  * Created by wangzy on 2018/4/19.
  */
@@ -14,20 +16,11 @@ public class Tb_Role {
     /**
      * 角色名称
      */
-    private String role;
+    private String roleName;
     /**
-     * 多role对一user,引用tb_user的id
+     * 一个角色可以对应多个用户,不存入数据库,@transient
      */
-    private Integer tb_user_id;
-
-    @Override
-    public String toString() {
-        return "Tb_Role{" +
-                "id=" + id +
-                ", role='" + role + '\'' +
-                ", tb_user_id=" + tb_user_id +
-                '}';
-    }
+    private List<Tb_User> users;
 
     public Integer getId() {
         return id;
@@ -37,20 +30,19 @@ public class Tb_Role {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
-    public Integer getTb_user_id() {
-        return tb_user_id;
+    public List<Tb_User> getUsers() {
+        return users;
     }
 
-    public void setTb_user_id(Integer tb_user_id) {
-        this.tb_user_id = tb_user_id;
+    public void setUsers(List<Tb_User> users) {
+        this.users = users;
     }
-
 }

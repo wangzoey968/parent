@@ -2,6 +2,8 @@
 当前页码:pageNum;
 每页条数:pageSize;
 
+可以用sql语句解决的问题就不要用java代码去解决
+
 if/while
     break,是指终止本次循环,不进行后续循环
     continue,终止本次循环,进行下次循环
@@ -126,3 +128,6 @@ MidiSystem是媒体的类
     synchronized(同步化)可能会导致死锁(deadLock),原则上只做最少量的同步化
 
 如果两个对象的hashcode值相等,对象不一定相等;但是如果对象相等,则hashcode一定相等,复写hashcode则一定会复写equals
+
+**********************************************************java核心卷2
+

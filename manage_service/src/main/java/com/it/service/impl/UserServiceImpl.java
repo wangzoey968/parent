@@ -1,8 +1,12 @@
 package com.it.service.impl;
 
 import com.it.dao.UserDao;
+import com.it.model.Tb_Role;
 import com.it.model.Tb_User;
 import com.it.service.UserService;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.Test;
+import org.mybatis.spring.SqlSessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,13 +30,8 @@ public class UserServiceImpl implements UserService {
         return userDao.delete(tb_User);
     }
 
-    public Tb_User updateUserById(Tb_User tb_User) {
-        return userDao.update(tb_User);
-    }
-
     public Tb_User selectUserById(Integer id) {
-        //return userDao.selectUserById(id);
-        return null;
+        return userDao.selectUserById(id);
     }
 
     public Tb_User selectUserByName(String username) {
@@ -41,6 +40,18 @@ public class UserServiceImpl implements UserService {
 
     public List<Tb_User> selectUserByAddress(String address) {
         return userDao.selectUserByAddress(address);
+    }
+
+    /*查询用户以及下面的角色*/
+    public List<Tb_User> selectUserRole(Integer id){
+        List<Tb_User> users = userDao.selectUserRole(id);
+        for (Tb_User user : users) {
+            System.out.println(user.toString());
+            for (Tb_Role role : user.getRoles()) {
+                System.out.println(role.getRoleName()+role.getId());
+            }
+        }
+        return users;
     }
 
     //**************************************************************************

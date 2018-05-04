@@ -18,11 +18,6 @@
         WHERE id=#{id} ;
     </update>
 
-    <!--根据名字查询用户-->
-    <select id="selectUserByName" parameterType="String" resultType="Tb_User">
-        SELECT id,name,sex,address,photo,password FROM tb_user WHERE name=#{name}
-    </select>
-
     <select id="select" resultType="Tb_User">
         SELECT id,name,sex,address,photo FROM tb_user
         <trim prefix="WHERE" prefixOverrides="AND">
@@ -33,62 +28,42 @@
         </trim>
     </select>
 
-    <!--第一种方式-->
-    <!--user和role,一对多,多表联查-->
-    <!--<resultMap id="userRoleResult" type="Tb_User">
-        <id property="id" column="id"/>
-        <result property="name" column="name"/>
-        <result property="sex" column="sex"/>
-        <result property="address" column="address"/>
-        <collection property="roles" ofType="Tb_Role">
-            <result column="id" property="id"/>
-            <result column="role" property="role"/>
-            <result column="tb_user_id" property="tb_user_id"/>
-        </collection>
-        &lt;!&ndash;<association property="roles" javaType="Tb_Role">
-            <result property="id" column="id"/>
-            <result property="role" column="role"/>
-            <result property="tb_user_id" column="tb_user_id"/>
-        </association>&ndash;&gt;
-    </resultMap>
-    <select id="selectUserRole" parameterType="Integer" resultMap="userRoleResult">
-        SELECT
-            user.id ,
-            user.name,
-            user.sex,
-            user.address,
-            user.photo,
-            role.id ,
-            role.role,
-            role.tb_user_id
-        FROM
-            tb_user user
-        LEFT JOIN tb_role role
-            ON role.tb_user_id=user.id
-        AND
-            user.id=#{id}
-    </select>-->
+    <!--根据id查询用户-->
+    <select id="selectUserById" parameterType="java.lang.Integer" resultType="Tb_User">
+        SELECT * FROM tb_user WHERE id=#{id}
+    </select>
 
-    <!--定义结果集-->
-    <resultMap id="result" type="Tb_User">
+    <!--根据名字查询用户-->
+    <select id="selectUserByName" parameterType="java.lang.String" resultType="Tb_User">
+        SELECT id,name,sex,address,photo,password FROM tb_user WHERE name=#{name}
+    </select>
+
+    <!--根据地址查询用户list-->
+    <!-- There is no getter for property named 'address' in 'class java.lang.String',解决办法是把test=""中的address替换为_parameter-->
+    <select id="selectUserByAddress" parameterType="java.lang.String" resultType="Tb_User">
+        select * from tb_user
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="_parameter!= null and _parameter !='' ">address=#{address}</if>
+        </trim>
+    </select>
+
+    <!--多对多,联合查询-->
+    <!-- resultMap:映射实体类和字段之间的一一对应的关系 -->
+    <resultMap id="userRole" type="Tb_User">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="sex" column="sex"/>
         <result property="address" column="address"/>
-        <result property="photo" column="photo"/>
-        <!--<collection property="roles" ofType="com.it.model.Tb_Role" select="selectUserAndRole" fetchType="lazy">
+        <!--一对一关系映射使用association-->
+        <!--一对多关联映射使用collection -->
+        <collection property="roles" ofType="Tb_Role">
             <id property="id" column="id"/>
-            <result property="role" column="role"/>
-            <result property="tb_user_id" column="tb_user_id"/>
-        </collection>-->
+            <result property="roleName" column="roleName"/>
+        </collection>
     </resultMap>
-    <!--查询的起始位置-->
-    <select id="selectUserRole" resultMap="result">
-        select user.id,user.name,user.sex,user.address,user.photo from tb_user user WHERE id=#{id};
+    <select id="selectUserRole" parameterType="java.lang.Integer" resultMap="userRole">
+        SELECT u.id,u.name,u.sex,u.address,r.id,r.roleName FROM tb_user u LEFT JOIN tb_user_role ur ON u.id=ur.tb_user_id LEFT JOIN tb_role r ON r.id=ur.tb_role_id WHERE u.id=#{id}
     </select>
-    <!--collection的调用-->
-    <select id="selectUserAndRole" resultType="Tb_Role">
-        SELECT id,role,tb_user_id FROM tb_role WHERE tb_user_id = #{id}
-    </select>
+    <!--SELECT u.id,u.name,u.sex,u.address,r.id,r.roleName FROM tb_user u , tb_user_role ur ,tb_role r WHERE u.id=ur.tb_user_id AND r.id=ur.tb_role_id AND u.id=#{id}-->
 
 </mapper>

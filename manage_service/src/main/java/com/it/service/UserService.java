@@ -20,13 +20,6 @@ public interface UserService {
     Tb_User deleteUserById(Integer id);
 
     /**
-     * 根据ID修改学生信息
-     * @param tb_User
-     * @return
-     */
-    Tb_User updateUserById(Tb_User tb_User);
-
-    /**
      * 根据id查询用户
      * @param id
      * @return
@@ -47,5 +40,6 @@ public interface UserService {
      */
     List<Tb_User> selectUserByAddress(String address);
 
+    public List<Tb_User> selectUserRole(Integer id);
 
 }

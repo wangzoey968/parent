@@ -1,5 +1,6 @@
 package com.it.controller;
 
+import com.it.model.Tb_Role;
 import com.it.model.Tb_User;
 import com.it.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -39,13 +40,38 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/userTest")
+    public String userTest(HttpServletRequest request, HttpServletResponse response) {
+        //return "redirect:/jsp/user/aaa.jsp";
+        //return "forward:/index.jsp";
+        //return "/jsp/user/userInfo";
+        //进行垃圾回收
+        System.gc();
+        System.runFinalization();
+        return null;
+    }
+
     @RequestMapping("/userInfo")
     public String pageTest(HttpServletRequest request, HttpServletResponse response, Integer id, Model model) {
         Tb_User user = userService.selectUserById(id);
         model.addAttribute("user", user);
-        //return "redirect:/jsp/user/aaa.jsp";
-        //return "forward:/index.jsp";
         return "/jsp/user/userInfo";
+    }
+
+    @RequestMapping("/listUserByAddr")
+    public void listUserByAddr(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println(userService.selectUserByAddress("上海").toString());
+    }
+
+    @RequestMapping("/listUserRole")
+    public void listUserRole(HttpServletRequest request, HttpServletResponse response) {
+        List<Tb_User> users = userService.selectUserRole(1);
+        for (Tb_User user : users) {
+            System.out.println(user.toString());
+            for (Tb_Role role : user.getRoles()) {
+                System.out.println(role.getRoleName() + role.getId());
+            }
+        }
     }
 
     //登录
@@ -64,8 +90,6 @@ public class UserController {
             request.getSession().setAttribute(u.getName(), u);
             request.getSession().setMaxInactiveInterval(1000 * 60 * 60 * 24 * 3);
         }
-        System.gc();
-        System.runFinalization();
         return view;
     }
 

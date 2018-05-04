@@ -7,7 +7,6 @@ import java.util.List;
 
 @Alias("Tb_User")
 public class Tb_User {
-
     /**
      * id
      */
@@ -33,7 +32,7 @@ public class Tb_User {
      */
     private String password;
     /**
-     * user拥有的role,一user对多role,
+     * user拥有的role,一user对多role,不存入数据库,@transient
      */
     private ArrayList<Tb_Role> roles;
 
