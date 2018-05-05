@@ -160,7 +160,6 @@ public class UserController {
         for (Tb_Role role : users.get(0).getRoles()) {
             System.out.println(role.getRoleName()+role.getId());
         }*/
-
         Tb_User us = userService.selectUserOrder(1);
     }
 
