@@ -1,9 +1,6 @@
 package readXml;
 
-import com.it.service.UserService;
-import com.sun.deploy.config.ClientConfig;
-import javafx.application.Platform;
-import javafx.scene.control.Alert;
+import com.it.service.mybatis.inter.UserService;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -13,13 +10,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**

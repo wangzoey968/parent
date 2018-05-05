@@ -43,7 +43,7 @@
     </typeAliases>
 
     <!--<mappers>
-        <mapper resource="com.it.dao.UserDao"/>
+        <mapper resource="com.it.dao.inter.UserDao"/>
         <package name="com.it.dao"/>
     </mappers>-->
 

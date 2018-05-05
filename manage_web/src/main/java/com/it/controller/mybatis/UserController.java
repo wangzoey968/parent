@@ -1,14 +1,9 @@
-package com.it.controller;
+package com.it.controller.mybatis;
 
-import com.it.model.Tb_Order;
 import com.it.model.Tb_Role;
 import com.it.model.Tb_User;
-import com.it.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.it.service.mybatis.inter.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.dom4j.Document;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -25,12 +20,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.Marshaller;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;

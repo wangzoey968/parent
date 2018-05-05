@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.it.dao.RoleDao">
+<mapper namespace="com.it.dao.mybatis.inter.RoleDao">
     <sql id="field">id,role,tb_user_id</sql>
     <select id="select" resultType="Tb_Role">
         SELECT * FROM  tb_role

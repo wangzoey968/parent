@@ -56,7 +56,7 @@ public class SqlSessionFactoryTest {
     @Test
     public void getUsers() throws Exception {
         session = sqlSessionFactory.openSession();
-        List<Tb_User> list = session.selectList("com.it.dao.UserDao.select");
+        List<Tb_User> list = session.selectList("com.it.dao.mybatis.inter.UserDao.select");
 
     }
 }

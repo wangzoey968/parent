@@ -1,4 +1,4 @@
-package com.it.service;
+package com.it.service.mybatis.inter;
 
 import com.it.model.Tb_User;
 

@@ -1,12 +1,8 @@
-package com.it.service.impl;
+package com.it.service.mybatis.impl;
 
-import com.it.dao.UserDao;
-import com.it.model.Tb_Role;
+import com.it.dao.mybatis.inter.UserDao;
 import com.it.model.Tb_User;
-import com.it.service.UserService;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.junit.Test;
-import org.mybatis.spring.SqlSessionUtils;
+import com.it.service.mybatis.inter.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

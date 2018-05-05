@@ -1,6 +1,6 @@
-package com.it.dao;
+package com.it.dao.mybatis.inter;
 
-import com.it.dao.base.BaseDao;
+import com.it.dao.mybatis.BaseDao;
 import com.it.model.Tb_Role;
 
 /**
