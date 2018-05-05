@@ -14,12 +14,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="manage_common" target="1.8" />
-      <module name="manage_dao" target="1.8" />
-      <module name="manage_pojo" target="1.8" />
-      <module name="manage_service" target="1.8" />
-      <module name="manage_web" target="1.8" />
-      <module name="parent" target="1.8" />
+      <module name="manage_common" target="1.5" />
+      <module name="manage_dao" target="1.5" />
+      <module name="manage_pojo" target="1.5" />
+      <module name="manage_service" target="1.5" />
+      <module name="manage_web" target="1.7" />
+      <module name="parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

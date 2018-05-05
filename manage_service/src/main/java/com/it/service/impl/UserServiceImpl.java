@@ -47,6 +47,13 @@ public class UserServiceImpl implements UserService {
         return userDao.selectUserRole(id);
     }
 
+    /*查询user和其下面的order*/
+    public Tb_User selectUserOrder(Integer id){
+        Tb_User us = userDao.selectUserOrder(id);
+        System.out.println(us.toString());
+        return us;
+    }
+
     //***********************************************************************
     //supports是指有事物就使用事物,没有事物,就忽略
     //@Cacheable(value = "user")

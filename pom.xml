@@ -251,6 +251,13 @@
             <version>5.5.1</version>
         </dependency>
 
+        <!--引入dom4j,解析xml-->
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
         <!--mybatis自动建表-->
         <!--<dependency>
             <groupId>com.gitee.sunchenbin.mybatis.actable</groupId>

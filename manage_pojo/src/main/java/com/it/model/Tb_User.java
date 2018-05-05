@@ -35,6 +35,10 @@ public class Tb_User {
      * user拥有的role,一user对多role,不存入数据库,@transient
      */
     private ArrayList<Tb_Role> roles;
+    /**
+     * user拥有多个订单,一对多,不存入数据库,@transient
+     */
+    private ArrayList<Tb_Order> orders;
 
     @Override
     public String toString() {
@@ -44,7 +48,9 @@ public class Tb_User {
                 ", sex=" + sex +
                 ", address='" + address + '\'' +
                 ", photo='" + photo + '\'' +
+                ", password='" + password + '\'' +
                 ", roles=" + roles +
+                ", orders=" + orders +
                 '}';
     }
 
@@ -88,10 +94,6 @@ public class Tb_User {
         this.photo = photo;
     }
 
-    public ArrayList<Tb_Role> getRoles() {
-        return roles;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -100,7 +102,19 @@ public class Tb_User {
         this.password = password;
     }
 
+    public ArrayList<Tb_Role> getRoles() {
+        return roles;
+    }
+
     public void setRoles(ArrayList<Tb_Role> roles) {
         this.roles = roles;
+    }
+
+    public ArrayList<Tb_Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Tb_Order> orders) {
+        this.orders = orders;
     }
 }

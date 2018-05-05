@@ -1,22 +1,25 @@
+package readXml;
+
 import com.it.service.UserService;
+import com.sun.deploy.config.ClientConfig;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.URL;
-import java.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
@@ -45,35 +48,16 @@ public class ReadXmlTest {
         }
     }
 
+    //使用SaxReader读取xml文件
     @Test
-    public void s1() throws Exception {
-        Locale china = Locale.CHINA;
-        Collator collator = Collator.getInstance(china);
-        if (collator.compare("a", "A") < 0) {
-            //类加载器
-            Thread thread = Thread.currentThread();
-            ClassLoader loader = thread.getContextClassLoader();
-            Class user = loader.loadClass("com.it.model.Tb_User");
-        }
-
-        //比较,通过使用collator,locale
-        new Comparator<Locale>() {
-            Collator c = Collator.getInstance(Locale.getDefault());
-            @Override
-            public int compare(Locale o1, Locale o2) {
-                return c.compare(o1, o2);
-            }
-        };
-
-
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("this is title");
-            }
-        });
-
+    public void init() throws Exception {
+        SAXReader reader = new SAXReader();
+        //注意路径
+        Document document = reader.read(new File("src/test/java/readXml/ClientConfig.xml"));
+        Element serverElement = document.getRootElement().element("Server");
+        String serverAddress = serverElement.attribute("host").getValue();
+        Integer serverPort = Integer.valueOf(serverElement.attribute("port").getValue());
+        System.out.println(serverAddress + "" + serverPort);
     }
 
 }

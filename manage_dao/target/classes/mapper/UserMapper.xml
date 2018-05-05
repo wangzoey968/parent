@@ -47,6 +47,8 @@
         </trim>
     </select>
 
+    <!--一对一关系映射使用association-->
+    <!--一对多关联映射使用collection -->
     <!--多对多,联合查询-->
     <!-- resultMap:映射实体类和字段之间的一一对应的关系 -->
     <resultMap id="userRole" type="Tb_User">
@@ -54,16 +56,34 @@
         <result property="name" column="name"/>
         <result property="sex" column="sex"/>
         <result property="address" column="address"/>
-        <!--一对多关系映射使用association-->
-        <!-- 多对一关联映射使用collection -->
         <collection property="roles" ofType="Tb_Role">
             <id property="id" column="id"/>
             <result property="roleName" column="roleName"/>
         </collection>
     </resultMap>
     <select id="selectUserRole" parameterType="java.lang.Integer" resultMap="userRole">
-        SELECT u.id,u.name,u.sex,u.address,r.id,r.roleName FROM tb_user u LEFT JOIN tb_user_role ur  ON u.id=ur.tb_user_id LEFT JOIN tb_role r ON r.id=ur.tb_role_id WHERE u.id=#{id}
+        SELECT * FROM tb_user u LEFT JOIN tb_user_role ur ON u.id=ur.tb_user_id LEFT JOIN tb_role r ON r.id=ur.tb_role_id WHERE u.id=#{id}
     </select>
-    <!--SELECT u.id,u.name,u.sex,u.address,r.id,r.roleName FROM tb_user u , tb_user_role ur ,tb_role r WHERE u.id=ur.tb_user_id AND r.id=ur.tb_role_id AND u.id=#{id}-->
+
+    <!--一个user对应多个order-->
+    <resultMap id="userOrderMap" type="Tb_User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <result property="photo" column="photo"/>
+        <collection property="orders" ofType="Tb_Order">
+            <id property="id" column="id"/>
+            <result property="orderNum" column="orderNum"/>
+            <result property="createTime" column="createTime"/>
+            <result property="tb_user_id" column="tb_user_id"/>
+        </collection>
+    </resultMap>
+    <select id="selectUserOrder" parameterType="java.lang.Integer" resultMap="userOrderMap">
+        SELECT u.id as id,u.name as name,u.sex as sex,u.address as address,u.photo as photo,
+                o.id as id ,o.orderNum as orderNum,o.createTime as createTime,o.tb_user_id as tb_user_id
+        FROM tb_user u LEFT JOIN tb_order o ON u.id=o.tb_user_id
+        WHERE u.id=#{id}
+    </select>
 
 </mapper>

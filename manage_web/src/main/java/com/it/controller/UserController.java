@@ -1,13 +1,19 @@
 package com.it.controller;
 
+import com.it.model.Tb_Order;
 import com.it.model.Tb_Role;
 import com.it.model.Tb_User;
 import com.it.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -142,6 +148,20 @@ public class UserController {
         }
         System.out.println((System.currentTimeMillis() - start));//460M,1290mills
         return "/jsp/user/home";
+    }
+
+    /**直接在Controller中写的测试*/
+    @Test
+    public void ss(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:config/applicationContext.xml");
+        UserService userService = (UserService) context.getBean("userService");
+        /*List<Tb_User> users = userService.selectUserRole(1);
+        System.out.println(users.toString());
+        for (Tb_Role role : users.get(0).getRoles()) {
+            System.out.println(role.getRoleName()+role.getId());
+        }*/
+
+        Tb_User us = userService.selectUserOrder(1);
     }
 
 }

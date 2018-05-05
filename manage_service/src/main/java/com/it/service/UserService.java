@@ -40,6 +40,17 @@ public interface UserService {
      */
     List<Tb_User> selectUserByAddress(String address);
 
+    /**
+     * 查询user和其下的role
+     * @param id
+     */
+    // TODO
     public List<Tb_User> selectUserRole(Integer id);
+
+    /**
+     * 查询user和下面的Order
+     * @param id
+     */
+    public Tb_User selectUserOrder(Integer id);
 
 }

@@ -9,12 +9,14 @@ import java.util.List;
 @Repository("userDao")
 public interface UserDao extends BaseDao<Tb_User> {
 
-    public List<Tb_User> selectUserRole(Integer id);
-
     public Tb_User selectUserById(Integer id);
 
     public Tb_User selectUserByName(String name);
 
     public List<Tb_User> selectUserByAddress(String address);
+
+    public List<Tb_User> selectUserRole(Integer id);
+
+    public Tb_User selectUserOrder(Integer id);
 
 }
