@@ -146,7 +146,6 @@ public class UserController {
 
     /**
      * 获取应硬件的mac地址
-     * @throws Exception
      */
     @Test
     public void getMac() throws Exception {
