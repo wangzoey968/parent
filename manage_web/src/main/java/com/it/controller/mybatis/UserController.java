@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -140,6 +142,34 @@ public class UserController {
         }
         System.out.println((System.currentTimeMillis() - start));//460M,1290mills
         return "/jsp/user/home";
+    }
+
+    /**
+     * 获取应硬件的mac地址
+     * @throws Exception
+     */
+    @Test
+    public void getMac() throws Exception {
+        InetAddress ia = InetAddress.getLocalHost();
+        NetworkInterface address = NetworkInterface.getByInetAddress(ia);
+        byte[] mac = address.getHardwareAddress();
+        StringBuffer sb = new StringBuffer("");
+
+        for (int i = 0; i < mac.length; i++) {
+            if (i != 0) {
+                sb.append("-");
+            }
+            //字节转换为整数
+            int temp = mac[i] & 0xff;
+            String str = Integer.toHexString(temp);
+            System.out.println("每8位:" + str);
+            if (str.length() == 1) {
+                sb.append("0" + str);
+            } else {
+                sb.append(str);
+            }
+        }
+        System.out.println("本机MAC地址:" + sb.toString().toUpperCase());
     }
 
     /**直接在Controller中写的测试*/
